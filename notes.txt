@@ -1,0 +1,53 @@
+User Flow: 
+Create lead logic to get a lyric
+Create database and move songs into it
+Authentication uses JWT
+
+Migrations and pre-populating data in MongoDB with Mongoose automatically on heroku
+(Remove MySQL from Les Computer)
+
+Flow
+
+Present random song lyric as question (What is the answer structure?
+answer structure is multiple choice (use inquirer?)
+Present 10 questions
+Present raw points score, and hi score table and player rank
+Would you like bonuse points for difficult questions?  If no, show "Play again?" screen.  If yes, registration flow
+After registration flow completion, show hi-score, and buttons for play again, bonus points
+
+Customize game flow:
+Form with required fields
+What decade were you born in? multiple choice 60s - 00s
+Accept form, Validate input, save to user data
+"Customization Complete!"
+Buttons for "Play bonus game", "Play basic game"
+bonus game vs basic game
+
+In corner, have Register and About links/buttons
+
+1. Create a db, Get the song data into that db as a result of starting the app (programmatically)
+2. Work on getting initial page with single lyric and multiple choice answer
+
+
+
+
+ May need to add the following to package.json for seeding:
+
+
+{
+ 
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed",
+    "heroku-postbuild": "node utils/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.2.9", 
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
