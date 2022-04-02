@@ -442,13 +442,6 @@
         "genre": "pop",
         "clean": true
     },
-    { "title": "",
-        "artist": "Donald Glover AKA Childish Gambino",
-        "lyric": "Seven billion souls that move around the sun Rolling faster, faster, not a chance to slow down",
-        "year": 2018,
-        "genre": "pop",
-        "clean": true
-    },
     { "title": "Bittersweet Symphony",
         "artist": "The Verve",
         "lyric": "Trying to make ends meet, trying to find some money then you die.",
@@ -501,13 +494,6 @@
     { "title": "Land of Confusion",
         "artist": "Genesis",
         "lyric": "There's too many men, too many people Making too many problems And there's not much love to go around Can't you see this is the land of confusion?",
-        "year": 1,
-        "genre": "pop",
-        "clean": true
-    }, 
-    { "title": "",
-        "artist": "",
-        "lyric": "",
         "year": 1,
         "genre": "pop",
         "clean": true

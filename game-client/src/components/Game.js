@@ -5,14 +5,15 @@ import React from 'react';
 // This prevents us from having to type `props.lyric` each time we want to refer to the lyric object
 export default function Songs({ lyric }) {
   return (
-    <div className="container">
-      <h1>Lyric:</h1>
-      <ul className="lyric">
-        {/* RANDOM LYRIC */}
-          <li key={songs.lyric}>
-            {`${songs.lyric}`}
-          </li>
-      </ul>
-    </div>
+    <p> game goes here</p>
+    // <div className="container">
+    //   <h1>Lyric:</h1>
+    //   <ul className="lyric">
+    //     {/* RANDOM LYRIC */}
+    //       <li key={songs.lyric}>
+    //         {`${songs.lyric}`}
+    //       </li>
+    //   </ul>
+    // </div>
   );
 }
