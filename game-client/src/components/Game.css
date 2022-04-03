@@ -1,0 +1,17 @@
+
+:root {
+    --mintcream: #f4fff8;
+    --darkliver: #4d4847;
+    --outerspacecrayola: #1c3738;
+    --pewterblue: #8baaad;
+    --darkgreenblack: #000f08;
+    --green: #539987;
+}
+/* 
+body {
+   background-color: orangered;
+} */
+
+#background {
+    background-color: orangered;
+}
