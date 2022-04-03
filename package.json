@@ -6,14 +6,15 @@
   "scripts": {
     "start": "node songs-server/server.js",
     "build": "cd game-client && npm install && npm run build",
-    "heroku-postbuild": "node songs-server/utils/seed.js",
     "seed": "node songs-server/utils/seed.js",
-    "test": "test-all"
-    
+    "test": "test-all",
+    "heroku-postbuild": "node songs-server/utils/seed.js && npm run client-install && npm run client-build",
+    "client-install": "cd client && npm install",
+    "client-build": "cd client && npm run build"
   },
   "dependencies": {
-   "express": "^4.17.3",
-   "mongoose": "^6.2.9"
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9"
   },
   "repository": {
     "type": "git",
