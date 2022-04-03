@@ -4,11 +4,11 @@
   "description": "song lyric game",
   "main": "index.js",
   "scripts": {
-    "start": "node songs-server/server.js",
+    "start": "node server.js",
     "build": "cd game-client && npm install && npm run build",
-    "seed": "node songs-server/utils/seed.js",
+    "seed": "node utils/seed.js",
     "test": "test-all",
-    "heroku-postbuild": "node songs-server/utils/seed.js && npm run client-install && npm run client-build",
+    "heroku-postbuild": "node utils/seed.js && npm run client-install && npm run client-build",
     "client-install": "cd game-client && npm install",
     "client-build": "cd game-client && npm run build"
   },
