@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node songs-server/server.js",
+    "build": "cd game-client && npm install && npm run build",
+    "heroku-postbuild": "node utils/seed.js",
     "seed": "node songs-server/utils/seed",
     "test": "test-all"
+    
   },
   "dependencies": {
    "express": "^4.17.3",
