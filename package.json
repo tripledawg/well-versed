@@ -9,8 +9,8 @@
     "seed": "node songs-server/utils/seed.js",
     "test": "test-all",
     "heroku-postbuild": "node songs-server/utils/seed.js && npm run client-install && npm run client-build",
-    "client-install": "cd client && npm install",
-    "client-build": "npm run build"
+    "client-install": "cd game-client && npm install",
+    "client-build": "cd game-client && npm run build"
   },
   "dependencies": {
     "express": "^4.17.3",
