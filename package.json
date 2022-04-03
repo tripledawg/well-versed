@@ -24,6 +24,9 @@
     "lyric",
     "game"
   ],
+  "engines": {
+    "node": "^16.13.1"
+  },
   "author": "Leslie Crouch",
   "license": "MIT",
   "bugs": {
