@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('./config/connection');
-// const routes = require('./routes');
+const path = require('path');
+const routes = require('./routes');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -8,14 +9,9 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(routes);
+app.use(routes);
 
 db.once('open', () => {
-  app.get("/api", (req, res) => {
-    res.json({
-      message: "hello from server"
-    });
-  })
   app.listen(PORT, () => {
     console.log(`API server for social network api running on port ${PORT}!`);
   });
