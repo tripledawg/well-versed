@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 
-import Game from './components/Game';
+import GuessTitleByLyric from './components/GuessTitleByLyric';
 import Nav from './components/Nav';
 
 function App() {
-  return <Game />;
+  return <GuessTitleByLyric />;
 }
 
 export default App;
