@@ -4,10 +4,10 @@ import './GuessTitleByLyric.css';
 /* Randomize array in-place using Durstenfeld shuffle algorithm */
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
 }
 
@@ -24,25 +24,23 @@ function GuessTitleByLyric({ lyric }) {
       .then((data) => {
         setData(data);
         var randomArray = [];
-        for (let i = 0; i < data.aggregation.length; i++)
-        {
-          randomArray[i] = data.aggregation[i].title;
+        for (let i = 0; i < data.aggregation.length; i++) {
+          randomArray[i] = data.aggregation[i];
         }
         shuffleArray(randomArray);
         setRandomizedData(randomArray);
       });
   }, []);
   return (
-      <div id="background">
-        <h3>What song is this lyric from?</h3>
-         <p> {!data ? "loading..." : data.aggregation[0].lyric}</p>
-         <p> {!randomizedData ? "loading..." : randomizedData[0]}</p>
-         <p> {!randomizedData ? "loading..." : randomizedData[1]}</p>
-         <p> {!randomizedData ? "loading..." : randomizedData[2]}</p>
-         <p> {!randomizedData ? "loading..." : randomizedData[3]}</p>
-         <p> {!randomizedData ? "loading..." : randomizedData[4]}</p>
-      </div>
-
+    <div id="background">
+      <h3>What song is this lyric from?</h3>
+      <p>{!data ? "loading..." : data.aggregation[0].lyric}</p>
+      <label><input type="radio" /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
+      <label><input type="radio" /> {!randomizedData ? "loading..." : randomizedData[1].title} by {!randomizedData ? "loading..." : randomizedData[1].artist}</label><br></br>
+      <label><input type="radio" /> {!randomizedData ? "loading..." : randomizedData[2].title} by {!randomizedData ? "loading..." : randomizedData[2].artist}</label><br></br>
+      <label><input type="radio" /> {!randomizedData ? "loading..." : randomizedData[3].title} by {!randomizedData ? "loading..." : randomizedData[3].artist}</label><br></br>
+      <label><input type="radio" /> {!randomizedData ? "loading..." : randomizedData[4].title} by {!randomizedData ? "loading..." : randomizedData[4].artist}</label><br></br>
+    </div>
   );
 }
 
