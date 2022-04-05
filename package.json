@@ -8,10 +8,9 @@
     "build": "cd game-client && npm install && npm run build",
     "seed": "node utils/seed.js",
     "test": "test-all",
-    "heroku-postbuild": "node utils/seed.js && npm run client-install && npm run client-build && npm run client-run",
+    "heroku-postbuild": "node utils/seed.js && npm run client-install && npm run client-build",
     "client-install": "cd game-client && npm install",
-    "client-build": "cd game-client && npm run build",
-    "client-run": "cd game-client && npm start"
+    "client-build": "cd game-client && npm run build"
   },
   "dependencies": {
     "express": "^4.17.3",
