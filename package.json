@@ -1,6 +1,7 @@
 {
   "name": "well-versed",
   "version": "1.0.0",
+  "proxy": "http://localhost:3001",
   "description": "song lyric game",
   "main": "index.js",
   "scripts": {
