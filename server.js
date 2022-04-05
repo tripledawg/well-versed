@@ -8,7 +8,7 @@ const app = express();
 
 app.set('json spaces', 2); //makes json pretty when output from API
 
-app.use(express.static(path.resolve(__dirname, './client/build')));
+app.use(express.static(path.resolve(__dirname, './game-client/build')));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
