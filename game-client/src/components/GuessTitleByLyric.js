@@ -22,21 +22,11 @@ function GuessTitleByLyric({ lyric }) {
   // const handleChange = () => {
   //   setValue(false);
   // };
-  const handleAnswer1Change = () => {
-    setValue("answer1");
-  };
-  const handleAnswer2Change = () => {
-    setValue("answer2");
-  };
-  const handleAnswer3Change = () => {
-    setValue("answer3");
-  };
-  const handleAnswer4Change = () => {
-    setValue("answer4");
-  };
-  const handleAnswer5Change = () => {
-    setValue("answer5");
-  };
+
+  const handleChange = (answer) => {
+    setValue(answer);
+  }
+
   React.useEffect(() => {
     fetch("/api/songLyrics")
       .then((res) => res.json())
@@ -51,14 +41,22 @@ function GuessTitleByLyric({ lyric }) {
       });
   }, []);
 
-  const onSubmit = (e) => {
-    console.log("reached on submit")
-    e.preventDefault();
-    if (data.aggregation[0].title + ' by ' + data.aggregation[0].artist === e) {
-      // display feedback
-      // assign and store points
-      // draw a new component with a new question
-      // check and increment the question counter or end game and post final score and user signup prompt
+
+
+
+  const onSubmit = () => {
+    console.log(randomizedData[value].lyric);
+    if (randomizedData[value].lyric === data.aggregation[0].lyric) {
+      console.log("correct!");
+      // assign points
+      // increment question counter
+      // output clickable feedback component
+    }
+    else{
+      console.log("wrong!");
+      // no points
+      // increment question counter
+      // output clickable feedback component
     }
   };
 
@@ -68,13 +66,12 @@ function GuessTitleByLyric({ lyric }) {
       <form onSubmit={onSubmit}>
         <h3>What song is this lyric from?</h3>
         <p>{!data ? "loading..." : data.aggregation[0].lyric}</p>
-        <label><input type="radio" checked={value === "answer1"} onChange={handleAnswer1Change} /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
-        <label><input type="radio" checked={value === "answer2"} onChange={handleAnswer2Change} /> {!randomizedData ? "loading..." : randomizedData[1].title} by {!randomizedData ? "loading..." : randomizedData[1].artist}</label><br></br>
-        <label><input type="radio" checked={value === "answer3"} onChange={handleAnswer3Change} /> {!randomizedData ? "loading..." : randomizedData[2].title} by {!randomizedData ? "loading..." : randomizedData[2].artist}</label><br></br>
-        <label><input type="radio" checked={value === "answer4"} onChange={handleAnswer4Change} /> {!randomizedData ? "loading..." : randomizedData[3].title} by {!randomizedData ? "loading..." : randomizedData[3].artist}</label><br></br>
-        <label><input type="radio" checked={value === "answer5"} onChange={handleAnswer5Change} /> {!randomizedData ? "loading..." : randomizedData[4].title} by {!randomizedData ? "loading..." : randomizedData[4].artist}</label><br></br>
-
-        <button type="submit">Submit</button> </form>  {/*added */}
+        <label><input type="radio" name="titleArtist" checked={value === 0} onChange={(e) => handleChange(0, e)} /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
+        <label><input type="radio" name="titleArtist" checked={value === 1} onChange={(e) => handleChange(1, e)} /> {!randomizedData ? "loading..." : randomizedData[1].title} by {!randomizedData ? "loading..." : randomizedData[1].artist}</label><br></br>
+        <label><input type="radio" name="titleArtist" checked={value === 2} onChange={(e) => handleChange(2, e)} /> {!randomizedData ? "loading..." : randomizedData[2].title} by {!randomizedData ? "loading..." : randomizedData[2].artist}</label><br></br>
+        <label><input type="radio" name="titleArtist" checked={value === 3} onChange={(e) => handleChange(3, e)} /> {!randomizedData ? "loading..." : randomizedData[3].title} by {!randomizedData ? "loading..." : randomizedData[3].artist}</label><br></br>
+        <label><input type="radio" name="titleArtist" checked={value === 4} onChange={(e) => handleChange(4, e)} /> {!randomizedData ? "loading..." : randomizedData[4].title} by {!randomizedData ? "loading..." : randomizedData[4].artist}</label><br></br>
+        <button type="submit">Submit</button> </form>
     </div>
   );
 }
