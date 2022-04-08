@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './GuessTitleByLyric.css';
 
-/* Randomize nultiple choice answer array in-place using Durstenfeld shuffle algorithm */
+/* Randomize multiple choice answer array in-place using Durstenfeld shuffle algorithm */
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
@@ -11,29 +11,29 @@ function shuffleArray(array) {
   }
 }
 
-// The Game component accepts props from App.js
-// We pluck off the "lyric" property of the props object using destructuring assignment
-// This prevents us from having to type `props.lyric` each time we want to refer to the lyric object
 
-function GuessTitleByLyric({ lyric }) {
-  const [data, setData] = React.useState(null);
-  const [randomizedData, setRandomizedData] = React.useState(null);
-  const [value, setValue] = React.useState(null);  //prevents a radio button from being selected at outset
-  // const handleChange = () => {
-  //   setValue(false);
-  // };
 
+//adding points 
+//function feedback
+
+
+function GuessTitleByLyric() {
+  const [data, setData] = useState(null);
+  const [randomizedData, setRandomizedData] = useState(null);
+  const [value, setValue] = useState(null);  //prevents a radio button from being selected at outset
+  const [score, setScore] = useState(0);
+  
   const handleChange = (answer) => {
     setValue(answer);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch("/api/songLyrics")
       .then((res) => res.json())
       .then((data) => {
         setData(data);  //all raw data 
         var randomArray = [];
-        for (let i = 0; i < data.aggregation.length; i++) {   //array is called "aggregation"
+        for (let i = 0; i < data.aggregation.length; i++) {   //array called "aggregation"
           randomArray[i] = data.aggregation[i];
         }
         shuffleArray(randomArray);
@@ -41,18 +41,12 @@ function GuessTitleByLyric({ lyric }) {
       });
   }, []);
 
-
-
-
   const onSubmit = () => {
     console.log(randomizedData[value].lyric);
     if (randomizedData[value].lyric === data.aggregation[0].lyric) {
-      console.log("correct!");
-      // assign points
-      // increment question counter
-      // output clickable feedback component
+      setScore(score + 1);
     }
-    else{
+    else {
       console.log("wrong!");
       // no points
       // increment question counter
@@ -60,10 +54,10 @@ function GuessTitleByLyric({ lyric }) {
     }
   };
 
-
   return (
     <div id="background">
       <form onSubmit={onSubmit}>
+        <p>Score:{score}</p>
         <h3>What song is this lyric from?</h3>
         <p>{!data ? "loading..." : data.aggregation[0].lyric}</p>
         <label><input type="radio" name="titleArtist" checked={value === 0} onChange={(e) => handleChange(0, e)} /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
@@ -75,6 +69,5 @@ function GuessTitleByLyric({ lyric }) {
     </div>
   );
 }
-
 
 export default GuessTitleByLyric;
