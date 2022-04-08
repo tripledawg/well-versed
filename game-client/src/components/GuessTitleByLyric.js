@@ -11,8 +11,6 @@ function shuffleArray(array) {
   }
 }
 
-
-
 //adding points 
 //function feedback
 
@@ -21,37 +19,47 @@ function GuessTitleByLyric() {
   const [data, setData] = useState(null);
   const [randomizedData, setRandomizedData] = useState(null);
   const [value, setValue] = useState(null);  //prevents a radio button from being selected at outset
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);  //score logic
   
   const handleChange = (answer) => {
     setValue(answer);
   }
 
   useEffect(() => {
-    fetch("/api/songLyrics")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);  //all raw data 
-        var randomArray = [];
-        for (let i = 0; i < data.aggregation.length; i++) {   //array called "aggregation"
-          randomArray[i] = data.aggregation[i];
-        }
-        shuffleArray(randomArray);
-        setRandomizedData(randomArray);
-      });
+  setQuestion();
   }, []);
+  const setQuestion = () => {
+    fetch("/api/songLyrics")
+    .then((res) => res.json())
+    .then((data) => {
+      setData(data);  //all raw data 
+      var randomArray = [];
+      for (let i = 0; i < data.aggregation.length; i++) {   //array called "aggregation"
+        randomArray[i] = data.aggregation[i];
+      }
+      shuffleArray(randomArray);
+      setRandomizedData(randomArray);
+    });
+  }
 
-  const onSubmit = () => {
+  //eval answer logic 
+  //score logic 
+  const onSubmit = (event) => {
+    event.preventDefault();
     console.log(randomizedData[value].lyric);
     if (randomizedData[value].lyric === data.aggregation[0].lyric) {
       setScore(score + 1);
     }
+    //feedback logic
+    //store score in local storage
+    //advance to next question, increment question number  
     else {
       console.log("wrong!");
       // no points
       // increment question counter
       // output clickable feedback component
     }
+    setQuestion();//set limit of questions
   };
 
   return (
