@@ -11,10 +11,6 @@ function shuffleArray(array) {
   }
 }
 
-//adding points 
-//function feedback
-
-
 function GuessTitleByLyric(props) {
   const [data, setData] = useState(null);
   const [randomizedData, setRandomizedData] = useState(null);
@@ -46,19 +42,13 @@ function GuessTitleByLyric(props) {
     event.preventDefault();
     // console.log(randomizedData[value].lyric);
     props.setQuestionCount(props.questionCount + 1);
-    //update state varaible that will hold 
     if (randomizedData[value].lyric === data.aggregation[0].lyric) {
       props.setScore(props.score + 1);
     }
-    //reset location of the radio button 
-    //advance to next question, increment question number  
     else {
       console.log("wrong!");
-      // no points
-      // increment question counter
-      // output clickable feedback component
     }
-    setQuestion();//set limit of questions
+    setQuestion();
   };
 
   return (

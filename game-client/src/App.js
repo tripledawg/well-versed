@@ -11,7 +11,7 @@ function App() {
   const [score, setScore] = useState(0);  //score logic
   localStorage.setItem("score", score)
 
-  if (questionCount < 2) {
+  if (questionCount < 2) {  //sets limit of questions
     return <div>
       <GuessTitleByLyric score={score} setScore={setScore} questionCount={questionCount} setQuestionCount={setQuestionCount} /> </div>;
   }

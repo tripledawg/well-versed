@@ -18,8 +18,7 @@ const userSchema = new Schema(
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
       //validation of email address using Mongoose's matching validation
     },
-    thoughts: [thoughtsSchema],//array of thought ids
-    friends: [friendSchema]//array of user ids of friends
+    password: []
   },
   {
     toJSON: {
