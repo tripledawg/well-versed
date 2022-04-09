@@ -41,17 +41,16 @@ function GuessTitleByLyric() {
       setRandomizedData(randomArray);
     });
   }
-
-  //eval answer logic 
-  //score logic 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(randomizedData[value].lyric);
     if (randomizedData[value].lyric === data.aggregation[0].lyric) {
       setScore(score + 1);
     }
-    //feedback logic
+   
+
     //store score in local storage
+    //reset location of the radio button 
     //advance to next question, increment question number  
     else {
       console.log("wrong!");
@@ -61,6 +60,8 @@ function GuessTitleByLyric() {
     }
     setQuestion();//set limit of questions
   };
+
+  localStorage.setItem("score", score)
 
   return (
     <div id="background">
