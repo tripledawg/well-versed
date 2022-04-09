@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 const SongLyric = require('../models/SongLyric');
-const songData = require('./songs')
+const songData = require('./songsCopy')
 
 connection.on('error', (err) => err);
 
