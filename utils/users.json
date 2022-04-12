@@ -1,0 +1,24 @@
+[
+    {
+        "email": "lmc@uga.edu",
+        "password": "ilovemusic", 
+        "year": 1977
+    },
+    {  "email": "rrr@uga.edu",
+        "password": "ilovemusic", 
+        "year": 1997
+       
+    },
+    {  "email": "ppp@uga.edu",
+        "password": "ilovemusic",
+        "year": 2001
+    },
+    {  "email": "ggg@uga.edu",
+        "password": "ilovemusic",
+        "year": 1987
+    },
+    {  "email": "hhh@uga.edu",
+        "password": "ilovemusic",
+        "year": 1967
+    }
+]

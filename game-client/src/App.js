@@ -7,9 +7,9 @@ import EndGame from './components/EndGame';
 
 
 function App() {
-  const [questionCount, setQuestionCount] = useState(0);
-  const [score, setScore] = useState(0);  //score logic
-  localStorage.setItem("score", score)
+  const [questionCount, setQuestionCount] = useState(0);//starts over the questions
+  const [score, setScore] = useState(0);  //score logic starts with score of 0 
+  localStorage.setItem("score", score)  //stores scores
 
   if (questionCount < 2) {  //sets limit of questions
     return <div>

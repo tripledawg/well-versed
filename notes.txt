@@ -1,3 +1,20 @@
+To Do: 
+password storage encryption
+password validation
+user backend
+session id
+user flow
+login button
+restart button 
+high scores button for logged in users
+code for no repeat lyrics
+////
+styling 
+fix spacing in songs.js entries
+seed.js back to song.js
+
+
+
 User Flow: 
 Create lead logic to get a lyric
 Create database and move songs into it
