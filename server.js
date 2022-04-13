@@ -10,7 +10,7 @@ const dotenv = require('dotenv').config()  ///imports environment variable
 
 
 const store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/connect_mongodb_session_test',  //how to have this work with server???  .env???
+  uri: process.env.MONGODB_URI,
   collection: 'mySessions'
 });
 
