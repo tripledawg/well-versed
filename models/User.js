@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const SALT_WORK_FACTOR = 5; 
 
 function checkPassword(loginPw) {
   return bcrypt.compareSync(loginPw, this.password);
