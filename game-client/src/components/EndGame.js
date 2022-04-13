@@ -8,11 +8,11 @@ export default function EndGame(props) {
   }
 
   const createUser = () => {
-
+props.setRegister(true);
   }
   return (
   <div><p>Game Over! Final Score: {props.score}</p>
-  {/* <button onCLick={createUser}>Sign up for custom games?</button> */}
+  <button onClick={createUser}>Sign up for custom games?</button>
   <button onClick={resetGame}>Play Again</button>
   </div>    
   );

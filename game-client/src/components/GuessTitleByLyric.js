@@ -11,7 +11,7 @@ function shuffleArray(array) {
   }
 }
 
-function GuessTitleByLyric(props) {
+export default function GuessTitleByLyric(props) {
   const [data, setData] = useState(null);
   const [randomizedData, setRandomizedData] = useState(null);
   const [value, setValue] = useState(null);  //prevents a radio button from being selected at outset
@@ -67,4 +67,3 @@ function GuessTitleByLyric(props) {
   );
 }
 
-export default GuessTitleByLyric;

@@ -1,6 +1,7 @@
 const { callbackify } = require('util');  //use???
-const { User } = require('../models');
-const { checkPassword } = require('..models/User');
+const { User } = require('../models/User');
+const { checkPassword } = require('../models/User');
+const bcrypt = require('bcrypt');
 
 module.exports = {
 
@@ -17,7 +18,7 @@ module.exports = {
         res.status(200).json(userData);
       });
     }
-    catch {
+    catch (err) {
       console.log(err);
       res.status(500).json(err).send;  //async and send 
     }

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css';
 
+
 export default function Signup(props) {
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [year, setYear] = useState(null);
     const resetGame = () => {
         props.setQuestionCount(0);
         props.setScore(0);
@@ -9,28 +13,36 @@ export default function Signup(props) {
 
     const createUser = (event) => {
         event.preventDefault();
-        resetGame();
-        fetch("/api/songLyrics")
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);  //all raw data 
-          setValue(null);
-          var randomArray = [];
-          for (let i = 0; i < data.aggregation.length; i++) {   //array called "aggregation"
-            randomArray[i] = data.aggregation[i];
-          }
-          shuffleArray(randomArray);
-          setRandomizedData(randomArray);
-        });
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 'email': email, 'password': password, 'year': year})
+        };
+        fetch("/api/users", requestOptions)
+            .then(() => {
+                resetGame();
+            })
+            .catch((err) => err.json());
     }
 
+    const handleEmail = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handlePassword = (event) => {
+        setPassword(event.target.value);
+    };
+
+    const handleYear = (event) => {
+        setYear (event.target.value);
+    };
+   
     return (
-        <div><form onSubmit={createUser}>
-            <input type="text" ref={inputRef} placeholder="email" />
-            <input type="text" ref={inputRef} placeholder="password" />
-            <input type="text" ref={inputRef} placeholder="year of birth" />
-            <button type="submit" value="submit">Signup</button>
-        </form >
+        <div>
+            <input onChange={handleEmail} placeholder="Email" />
+            <input onChange={handlePassword} placeholder="Password" />
+            <input onChange={handleYear} placeholder="Year of Birth" />
+            <button onClick={createUser}>Submit</button>
         </div>
     );
 }
