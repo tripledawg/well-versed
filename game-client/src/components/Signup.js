@@ -19,7 +19,8 @@ export default function Signup(props) {
             body: JSON.stringify({ 'email': email, 'password': password, 'year': year})
         };
         fetch("/api/users", requestOptions)
-            .then(() => {
+            .then((res) => {
+                props.setLoggedIn(res.loggedIn);
                 resetGame();
             })
             .catch((err) => err.json());
