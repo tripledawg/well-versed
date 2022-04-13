@@ -14,11 +14,11 @@ connection.once('open', async () => {
 
   await User.deleteMany({});
 
-
-  // Add students to the collection and await the results
   await SongLyric.collection.insertMany(songData);
 
-  await User.collection.insertMany(userData)
+  for (var i = 0; i < userData.length; i++) {
+    await User.create(userData[i]);
+  }
 
   // Log out the seed data to indicate what should appear in the database
   // console.table(songData);
