@@ -1,5 +1,5 @@
 const { callbackify } = require('util');  //use???
-const { User } = require('../models/User');
+const User = require('../models/User');
 const { checkPassword } = require('../models/User');
 const bcrypt = require('bcrypt');
 
@@ -12,7 +12,7 @@ module.exports = {
       // hash the password from 'req.body' and save to newUser
       newUser.password = await bcrypt.hash(req.body.password, 10);
       // create the newUser with the hashed password and save to DB
-      const userData = await User.save(newUser);
+      const userData = await User.create(newUser);
       req.session.save(() => {
         req.session.loggedIn = true;
         res.status(200).json(userData);

@@ -21,7 +21,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
       minLength: [8, "This password only has {VALUE} characters.  Please choose a password with at least 8 characters."],
-      maxLength: [12, "This password has {VALUE} characters. Please choose a password with 12 or fewer characters"],
       unique: false
     }, 
     year: {
