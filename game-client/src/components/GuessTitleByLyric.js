@@ -21,11 +21,11 @@ export default function GuessTitleByLyric(props) {
   }
 
   useEffect(() => {
-  setQuestion();
+    setQuestion();
   }, []);
-  
+
   const setQuestion = () => {
-      fetch("/api/songLyrics")
+    fetch("/api/songLyrics")
       .then((res) => res.json())
       .then((data) => {
         setData(data);  //all raw data 
@@ -56,7 +56,7 @@ export default function GuessTitleByLyric(props) {
       <form onSubmit={onSubmit}>
         <p>Score:{props.score}</p>
         <h3>What song is this lyric from?</h3>
-        <p><span style={{whiteSpace: 'pre-line'}}>{!data ? "loading..." : data.aggregation[0].lyric}</span></p> {/*react needs camel cased style keys*/}
+        <p><span style={{ whiteSpace: 'pre-line' }}>{!data ? "loading..." : data.aggregation[0].lyric}</span></p> {/*react needs camel cased style keys*/}
         <label><input type="radio" name="titleArtist" checked={value === 0} onChange={(e) => handleChange(0, e)} /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
         <label><input type="radio" name="titleArtist" checked={value === 1} onChange={(e) => handleChange(1, e)} /> {!randomizedData ? "loading..." : randomizedData[1].title} by {!randomizedData ? "loading..." : randomizedData[1].artist}</label><br></br>
         <label><input type="radio" name="titleArtist" checked={value === 2} onChange={(e) => handleChange(2, e)} /> {!randomizedData ? "loading..." : randomizedData[2].title} by {!randomizedData ? "loading..." : randomizedData[2].artist}</label><br></br>

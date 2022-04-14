@@ -8,11 +8,12 @@ export default function EndGame(props) {
   }
 
   const createUser = () => {
-    props.setRegister(true);
+    props.setUserState('registering');
   }
+
   return (
     <div><p>Game Over! Final Score: {props.score}</p>
-      <button onClick={createUser}>Sign up for custom games?</button>
+      <button hidden={props.userState !== 'new'} onClick={createUser}>Sign up for custom games?</button>
       <button onClick={resetGame}>Play Again</button>
     </div>
   );

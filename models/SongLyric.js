@@ -45,5 +45,4 @@ const songLyricSchema = new Schema(
 
 
 const SongLyric = model('songLyric', songLyricSchema);
-
 module.exports = SongLyric;

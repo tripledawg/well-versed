@@ -78,5 +78,5 @@ userSchema.pre('insertMany', function(next) {
   });
 });
 const User = model('user', userSchema);
-
+const checkPassword = checkPassword();
 module.exports = User;

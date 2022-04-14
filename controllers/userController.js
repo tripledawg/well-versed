@@ -13,6 +13,7 @@ module.exports = {
       newUser.password = await bcrypt.hash(req.body.password, 10);
       // create the newUser with the hashed password and save to DB
       const userData = await User.create(newUser);
+      console.log(userData);
       req.session.save(() => {
         req.session.loggedIn = true;
         res.status(200).json(userData);
@@ -30,19 +31,15 @@ module.exports = {
       // look in database to find the user matching this username
       const userData = await User.findOne({
         where: {
-          username: req.body.username,
-        },
+          email: req.params.email
+        }
       });
-
-      console.log(userData);
       if (!userData) {
         res.status(400).json({ message: 'Incorrect username or password' });
         return;
       }
 
       const correctPassword = await userData.checkPassword(req.body.password);
-
-      console.log(correctPassword);
       if (!correctPassword) {
         res.status(400).json({ message: 'Incorrect username or password' });
         return;
@@ -89,6 +86,15 @@ module.exports = {
       });
     } else {
       res.status(404).end();
+    }
+  },
+
+  async loggedIn(req, res) {
+    if (req.session.loggedIn) {
+      res.status(200).json({ 'loggedIn': 'true' });
+    }
+    else {
+      res.status(503).json({ 'message': 'User is not logged in.' });
     }
   }
 };

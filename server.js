@@ -27,7 +27,7 @@ const sess = {
   store: store,
   secret: process.env.SESSION_SECRET,  //session secret is in .env
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 };
 
 

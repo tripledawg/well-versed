@@ -2,29 +2,21 @@ import React, { useState } from 'react';
 import './Signup.css';
 
 
-export default function Signup(props) {
+export default function Login(props) {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
-    const [year, setYear] = useState(null);
-    const resetGame = () => {
-        props.setQuestionCount(0);
-        props.setScore(0);
-    }
 
-    const createUser = (event) => {
-        event.preventDefault();
+    const loginUser = () => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 'email': email, 'password': password, 'year': year})
+            body: JSON.stringify({ 'email': email, 'password': password })
         };
-        fetch("/api/users", requestOptions)
+        fetch("/api/users/:email", requestOptions)
             .then((res) => {
                 props.setUserState('loggedIn');
-                props.setUser(res.userData);
-                resetGame();
-            })
-            .catch((err) => err.json());
+                props.setUserData(res.userData);
+            }).catch((err) => err.json());;
     }
 
     const handleEmail = (event) => {
@@ -35,16 +27,12 @@ export default function Signup(props) {
         setPassword(event.target.value);
     };
 
-    const handleYear = (event) => {
-        setYear (event.target.value);
-    };
-   
     return (
         <div>
+            <p>Please Login:  </p>
             <input onChange={handleEmail} placeholder="Email" />
             <input onChange={handlePassword} placeholder="Password" />
-            <input onChange={handleYear} placeholder="Year of Birth" />
-            <button onClick={createUser}>Submit</button>
+            <button onClick={loginUser}>Submit</button>
         </div>
     );
 }
