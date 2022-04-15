@@ -43,7 +43,14 @@ export default function GuessTitleByLyric(props) {
     // console.log(randomizedData[value].lyric);
     props.setQuestionCount(props.questionCount + 1);
     if (randomizedData[value].lyric === data.aggregation[0].lyric) {
-      props.setScore(props.score + 1);
+      // bonus points!
+      if (props.userYear && data.aggregation[0].year - props.userYear > 30) {
+        props.setScore(props.score + 2);
+      } else if (props.userYear && props.userYear - data.aggregation[0].year > 5){
+        props.setScore(props.score + 2);
+      } else {
+        props.setScore(props.score + 1);
+      }
     }
     else {
       console.log("wrong!");

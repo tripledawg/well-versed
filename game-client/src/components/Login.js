@@ -6,16 +6,19 @@ export default function Login(props) {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
 
-    const loginUser = () => {
+    const loginUser = (event) => {
+        event.preventDefault();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 'email': email, 'password': password })
         };
-        fetch("/api/users/:email", requestOptions)
-            .then((res) => {
+        fetch("/api/users/login", requestOptions)
+            .then((res) => res.json())
+            .then((jsonData) => {
                 props.setUserState('loggedIn');
-                props.setUserData(res.userData);
+                props.setUserEmail(jsonData.email);
+                props.setUserYear(jsonData.year)
             }).catch((err) => err.json());;
     }
 
@@ -31,7 +34,7 @@ export default function Login(props) {
         <div>
             <p>Please Login:  </p>
             <input onChange={handleEmail} placeholder="Email" />
-            <input onChange={handlePassword} placeholder="Password" />
+            <input type="password" onChange={handlePassword} placeholder="Password" />
             <button onClick={loginUser}>Submit</button>
         </div>
     );

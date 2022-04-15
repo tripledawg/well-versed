@@ -1,6 +1,5 @@
 const { callbackify } = require('util');  //use???
 const User = require('../models/User');
-const { checkPassword } = require('../models/User');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -13,7 +12,6 @@ module.exports = {
       newUser.password = await bcrypt.hash(req.body.password, 10);
       // create the newUser with the hashed password and save to DB
       const userData = await User.create(newUser);
-      console.log(userData);
       req.session.save(() => {
         req.session.loggedIn = true;
         res.status(200).json(userData);
@@ -31,7 +29,7 @@ module.exports = {
       // look in database to find the user matching this username
       const userData = await User.findOne({
         where: {
-          email: req.params.email
+          email: req.body.email
         }
       });
       if (!userData) {
@@ -39,7 +37,7 @@ module.exports = {
         return;
       }
 
-      const correctPassword = await userData.checkPassword(req.body.password);
+      const correctPassword = await userData.validatePassword(req.body.password);
       if (!correctPassword) {
         res.status(400).json({ message: 'Incorrect username or password' });
         return;
@@ -48,8 +46,7 @@ module.exports = {
       //if both username and password are correct, start session
       req.session.save(() => {
         req.session.loggedIn = true;
-
-        res.status(200).json({ user: userData, message: 'Successful login' });
+        res.status(200).json(userData);
       });
     } catch (err) {
       console.log(err);
@@ -78,6 +75,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
+  
   // Log out
   async logout(req, res) {
     if (req.session.loggedIn) {

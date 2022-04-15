@@ -6,6 +6,7 @@ export default function Signup(props) {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [year, setYear] = useState(null);
+
     const resetGame = () => {
         props.setQuestionCount(0);
         props.setScore(0);
@@ -19,9 +20,11 @@ export default function Signup(props) {
             body: JSON.stringify({ 'email': email, 'password': password, 'year': year})
         };
         fetch("/api/users", requestOptions)
-            .then((res) => {
+            .then((res) => res.json())
+            .then((jsonData) => {
                 props.setUserState('loggedIn');
-                props.setUser(res.userData);
+                props.setUserEmail(jsonData.email);
+                props.setUserYear(jsonData.year);
                 resetGame();
             })
             .catch((err) => err.json());
@@ -42,7 +45,7 @@ export default function Signup(props) {
     return (
         <div>
             <input onChange={handleEmail} placeholder="Email" />
-            <input onChange={handlePassword} placeholder="Password" />
+            <input type="password" onChange={handlePassword} placeholder="Password" />
             <input onChange={handleYear} placeholder="Year of Birth" />
             <button onClick={createUser}>Submit</button>
         </div>
