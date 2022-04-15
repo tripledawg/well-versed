@@ -24,7 +24,7 @@ function App() {
     </div>
   }
   // If the user is new or logged in, show the game component
-  if (questionCount < 2 && (userState === 'loggedIn' || userState === 'new')) {  //sets limit of questions
+  if (questionCount < 5 && (userState === 'loggedIn' || userState === 'new')) {  //sets limit of questions
     return <div>
         <Nav userYear={userYear} setUserYear={setUserYear} userEmail={userEmail} setUserEmail={setUserEmail} userState={userState} setUserState={setUserState}/>
         <GuessTitleByLyric cleanOrDirty={cleanOrDirty} setCleanOrDirty={setCleanOrDirty} userYear={userYear} setUserYear={setUserYear} userEmail={userEmail} setUserEmail={setUserEmail} userState={userState} setUserState={setUserState} score={score} setScore={setScore} questionCount={questionCount} setQuestionCount={setQuestionCount} />

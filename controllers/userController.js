@@ -1,4 +1,3 @@
-const { callbackify } = require('util');  //use???
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
@@ -75,7 +74,6 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  
   // Log out
   async logout(req, res) {
     if (req.session.loggedIn) {
