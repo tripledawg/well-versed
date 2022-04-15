@@ -4,10 +4,13 @@
 
   [Click here to play the "Well-Versed" game!](https://well-versed-game.herokuapp.com/)
 
-  ## ![start button](wvStart.png) 
-  ## ![screenshot](wvs1.png) 
-  ## ![screenshot](wvs2.png) 
-  ## ![screenshot](wvs3.png) 
+  ## ![start button](wvsc4.png) 
+  ## ![screenshot](scwv.png) 
+  ## ![screenshot](wvsc5.png) 
+  ## ![screenshot](wvsc1.png) 
+  ## ![screenshot](wvsc2.png) 
+  ## ![screenshot](wvsc3.png) 
+ 
 
   # Table of Contents: 
   - [Description](#description)
