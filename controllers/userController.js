@@ -25,12 +25,14 @@ module.exports = {
   // Login existing user
   async readUser(req, res) {
     try {
+      console.log(req.body.email)
       // look in database to find the user matching this username
       const userData = await User.findOne({
         where: {
           email: req.body.email
         }
       });
+      console.log(userData)
       if (!userData) {
         res.status(400).json({ message: 'Incorrect username or password' });
         return;

@@ -21,6 +21,7 @@ export default function Login(props) {
                 props.setUserYear(jsonData.year)
             }).catch((err) => err.json());;
     }
+//how to use theloggedIn endpoint???
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -30,12 +31,24 @@ export default function Login(props) {
         setPassword(event.target.value);
     };
 
+    // const resetGame = (event) => {
+    //     setUserState('new');
+    //     props.resetGame(event.target.value)
+    // };
+    //    
+
     return (
-        <div>
-            <p>Please Login:  </p>
-            <input onChange={handleEmail} placeholder="Email" />
-            <input type="password" onChange={handlePassword} placeholder="Password" />
+        <div className="container" style={{ backgroundColor: 'orange' }}>
+            <div id="loginBox">
+                <p style={{ fontSize: '15pt' }}>Please Login:  </p>
+                <input onChange={handleEmail} placeholder="Email" />
+                <input type="password" onChange={handlePassword} placeholder="Password" />
+            </div>
+            <br></br>
             <button id="button" onClick={loginUser}>Submit</button>
         </div>
     );
 }
+
+
+//<button id="button" onClick={resetGame}>Go Back to Play</button> go to guessTitleByLyric

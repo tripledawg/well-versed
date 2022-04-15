@@ -46,7 +46,7 @@ export default function GuessTitleByLyric(props) {
       // bonus points!
       if (props.userYear && data.aggregation[0].year - props.userYear > 30) {
         props.setScore(props.score + 2);
-      } else if (props.userYear && props.userYear - data.aggregation[0].year > 5){
+      } else if (props.userYear && props.userYear - data.aggregation[0].year > 5) {
         props.setScore(props.score + 2);
       } else {
         props.setScore(props.score + 1);
@@ -60,16 +60,21 @@ export default function GuessTitleByLyric(props) {
 
   return (
     <div id="background">
-      <form onSubmit={onSubmit}>
-        <p style={{ fontSize: '25pt', color:'lightYellow'}}>Score: {props.score}</p>
-        <h3 >What song is this lyric from?</h3>
-        <p><span style={{ whiteSpace: 'pre-line', fontSize: '15pt', fontStyle: 'bold' }}>{!data ? "loading..." : data.aggregation[0].lyric}</span></p> {/*react needs camel cased style keys*/}
-        <label style={{ fontSize: '20pt'}}><input type="radio" name="titleArtist" checked={value === 0} onChange={(e) => handleChange(0, e)} /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
-        <label style={{ fontSize: '20pt'}}><input type="radio" name="titleArtist" checked={value === 1} onChange={(e) => handleChange(1, e)} /> {!randomizedData ? "loading..." : randomizedData[1].title} by {!randomizedData ? "loading..." : randomizedData[1].artist}</label><br></br>
-        <label style={{ fontSize: '20pt'}}><input type="radio" name="titleArtist" checked={value === 2} onChange={(e) => handleChange(2, e)} /> {!randomizedData ? "loading..." : randomizedData[2].title} by {!randomizedData ? "loading..." : randomizedData[2].artist}</label><br></br>
-        <label style={{ fontSize: '20pt'}}><input type="radio" name="titleArtist" checked={value === 3} onChange={(e) => handleChange(3, e)} /> {!randomizedData ? "loading..." : randomizedData[3].title} by {!randomizedData ? "loading..." : randomizedData[3].artist}</label><br></br>
-        <label style={{ fontSize: '20pt'}}><input type="radio" name="titleArtist" checked={value === 4} onChange={(e) => handleChange(4, e)} /> {!randomizedData ? "loading..." : randomizedData[4].title} by {!randomizedData ? "loading..." : randomizedData[4].artist}</label><br></br>
-        <button id="button"type="submit">Submit</button> </form>
+      <div className="container">
+        <div className="lyricbox">
+          <form onSubmit={onSubmit}>
+            <p style={{ fontSize: '25pt', color: 'lightYellow' }}>Score: {props.score}</p>
+            <h2 >What song is this lyric from?</h2>
+            <p><span style={{ whiteSpace: 'pre-line', fontSize: '20pt', fontStyle: 'bold' }}>{!data ? "loading..." : data.aggregation[0].lyric}</span></p> {/*react needs camel cased style keys*/}
+            <label style={{ fontStyle: 'italic', fontSize: '20pt' }}><input type="radio" name="titleArtist" checked={value === 0} onChange={(e) => handleChange(0, e)} /> {!randomizedData ? "loading..." : randomizedData[0].title} by {!randomizedData ? "loading..." : randomizedData[0].artist}</label><br></br>
+            <label style={{ fontStyle: 'italic', fontSize: '20pt' }}><input type="radio" name="titleArtist" checked={value === 1} onChange={(e) => handleChange(1, e)} /> {!randomizedData ? "loading..." : randomizedData[1].title} by {!randomizedData ? "loading..." : randomizedData[1].artist}</label><br></br>
+            <label style={{ fontStyle: 'italic', fontSize: '20pt' }}><input type="radio" name="titleArtist" checked={value === 2} onChange={(e) => handleChange(2, e)} /> {!randomizedData ? "loading..." : randomizedData[2].title} by {!randomizedData ? "loading..." : randomizedData[2].artist}</label><br></br>
+            <label style={{ fontStyle: 'italic', fontSize: '20pt' }}><input type="radio" name="titleArtist" checked={value === 3} onChange={(e) => handleChange(3, e)} /> {!randomizedData ? "loading..." : randomizedData[3].title} by {!randomizedData ? "loading..." : randomizedData[3].artist}</label><br></br>
+            <label style={{ fontStyle: 'italic', fontSize: '20pt' }}><input type="radio" name="titleArtist" checked={value === 4} onChange={(e) => handleChange(4, e)} /> {!randomizedData ? "loading..." : randomizedData[4].title} by {!randomizedData ? "loading..." : randomizedData[4].artist}</label><br></br>
+            <button id="button" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

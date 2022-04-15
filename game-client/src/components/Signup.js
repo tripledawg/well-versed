@@ -43,7 +43,7 @@ export default function Signup(props) {
     };
    
     return (
-        <div>
+        <div className="container" id="background">
             <input onChange={handleEmail} placeholder="Email" />
             <input type="password" onChange={handlePassword} placeholder="Password" />
             <input onChange={handleYear} placeholder="Year of Birth" />
