@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Splash.css';
 
+
+
 export default function Splash(props) {
     const startGame = () => {
         props.setUserState('new');
