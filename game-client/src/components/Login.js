@@ -35,7 +35,7 @@ export default function Login(props) {
             <p>Please Login:  </p>
             <input onChange={handleEmail} placeholder="Email" />
             <input type="password" onChange={handlePassword} placeholder="Password" />
-            <button onClick={loginUser}>Submit</button>
+            <button id="button" onClick={loginUser}>Submit</button>
         </div>
     );
 }

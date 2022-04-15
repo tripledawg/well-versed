@@ -6,8 +6,15 @@ export default function Splash(props) {
         props.setUserState('new');
     }
     return (
-        <div>
-            <button onClick={startGame}>Start a game!</button>
-        </div>
+        
+        <body id="background">
+            <div id="container"className="container">
+                <div>
+                    <button id="button" onClick={startGame}>Start a game!</button>
+                </div>
+            </div>
+        </body>
+
+
     )
 }

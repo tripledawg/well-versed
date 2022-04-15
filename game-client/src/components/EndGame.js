@@ -13,8 +13,8 @@ export default function EndGame(props) {
 
   return (
     <div><p>Game Over! Final Score: {props.score}</p>
-      <button hidden={props.userState !== 'new'} onClick={createUser}>Sign up for custom games?</button>
-      <button onClick={resetGame}>Play Again</button>
+      <button id="button" hidden={props.userState !== 'new'} onClick={createUser}>Sign up for custom games?</button>
+      <button id="button" onClick={resetGame}>Play Again</button>
     </div>
   );
 }

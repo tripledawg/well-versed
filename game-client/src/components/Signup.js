@@ -47,7 +47,7 @@ export default function Signup(props) {
             <input onChange={handleEmail} placeholder="Email" />
             <input type="password" onChange={handlePassword} placeholder="Password" />
             <input onChange={handleYear} placeholder="Year of Birth" />
-            <button onClick={createUser}>Submit</button>
+            <button id="button" onClick={createUser}>Submit</button>
         </div>
     );
 }

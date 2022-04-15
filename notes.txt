@@ -1,18 +1,19 @@
 To Do: 
-password storage encryption
-password validation
-user backend
-session id
-user flow
-login button
-restart button 
+Low
+///
 high scores button for logged in users
 code for no repeat lyrics
+clean feature
+
+High
 ////
 styling 
 fix spacing in songs.js entries
 seed.js back to song.js
 
+Med
+///
+fix new user problem
 
 
 User Flow: 

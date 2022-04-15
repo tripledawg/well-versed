@@ -18,9 +18,9 @@ export default function Nav(props) {  ///passes in state information as a proper
 //hide login button if logged in already, hide welcome msg if logged in, hide logout if new user
     return (
         <div>
-            <button hidden={props.userState === 'loggedIn'} onClick={login}>Login</button> 
+            <button id="button" hidden={props.userState === 'loggedIn'} onClick={login}>Login</button> 
             <p hidden={props.userState !== 'loggedIn'} >Welcome, {props.userEmail}, born in {props.userYear}!</p>
-            <button hidden={props.userState === 'new' || props.userState === 'loggingIn'} onClick={logout} >Logout</button>
+            <button id="button" hidden={props.userState === 'new' || props.userState === 'loggingIn'} onClick={logout} >Logout</button>
         </div>
     )
 }
