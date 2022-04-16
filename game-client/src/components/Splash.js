@@ -11,7 +11,7 @@ export default function Splash(props) {
 
             <div id="container"className="container">
                 <div>
-                    <button id="button" onClick={startGame}>Start a game!</button>
+                    <button id="button" onClick={startGame}>Welcome to Well-Versed! Start a game!</button>
                 </div>
             </div>
 
